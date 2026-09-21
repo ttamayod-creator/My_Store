@@ -3,10 +3,12 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-
+const productRoutes = require("./routes/product.routes");
 const prisma = require("./lib/prisma");
 
 const app = express();
+app.use(cors());
+app.use("/api/products", productRoutes);
 const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
